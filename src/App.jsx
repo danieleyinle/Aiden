@@ -1,12 +1,13 @@
-import MapView from './components/map/MapView';
+
 import './App.css';
-import 'leaflet/dist/leaflet.css';
-import './components/map/MapView.css';
+import 'leaflet/dist/leaflet.css'
+import Dashboard from './pages/Dashboard';
+
 
 function App() {
   return (
     <div className="app">
-      <MapView />
+      <Dashboard />
     </div>
   );
 }

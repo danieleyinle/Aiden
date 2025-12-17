@@ -3,6 +3,13 @@
 import { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Circle, Popup } from 'react-leaflet';
 import L from 'leaflet';
+import IncidentMarker from './IncidentMarker'; 
+import RiskZoneOverlay from './RiskZoneOverlay';
+import MapLegend from './MapLegend';
+import { demoIncidents } from '../../data/demoIncidents';
+import { calculateRiskZones } from '../../utils/riskCalculator';
+import 'leaflet/dist/leaflet.css';
+import './MapView.css'
 
 // Fix for default marker icons in React-Leaflet
 // (Leaflet's default icons don't load properly in Vite/Webpack)
@@ -21,6 +28,20 @@ const MapView = () => {
   // User's current location (mocked for demo - in real app, get from geolocation API)
   const userLocation = [6.5244, 3.3792];
 
+  const [incidents] = useState(demoIncidents);
+  const [riskZones, setRiskZones] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    const zones = calculateRiskZones(incidents);
+    setRiskZones(zones);
+    console.log('Risk zones calculated:', zones); // Debug
+  }, [incidents]);
+
   // Custom icon for user location marker (blue pulsing dot)
   const userLocationIcon = L.divIcon({
     className: 'user-location-marker',
@@ -31,7 +52,17 @@ const MapView = () => {
 
   return (
     <div className="map-wrapper">
+
+      {/* Loading overlay */}
+      {isLoading && (
+        <div className="map-loading">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
       {/* Main map container - takes full viewport */}
+      <MapLegend />
+
+
       <MapContainer
         center={lagosCenter}
         zoom={initialZoom}
@@ -45,6 +76,11 @@ const MapView = () => {
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           maxZoom={19}
         />
+
+        {/* Risk zones (render BEFORE markers so markers appear on top) - NEW */}
+        {riskZones.map((zone) => (
+          <RiskZoneOverlay key={zone.id} zone={zone} />
+        ))}
 
         {/* User location marker with pulsing animation */}
         <Marker position={userLocation} icon={userLocationIcon}>
@@ -62,6 +98,10 @@ const MapView = () => {
             weight: 2,
           }}
         />
+        {/* Plot all incident markers (NEW) */}
+        {incidents.map((incident) => (
+          <IncidentMarker key={incident.id} incident={incident} />
+        ))}
       </MapContainer>
     </div>
   );
