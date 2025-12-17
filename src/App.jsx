@@ -1,18 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landing from "./components/landing/Landing";
-import Dashboard from "./pages/Dashboard";
+import MapView from './components/map/MapView';
+import './App.css';
+import 'leaflet/dist/leaflet.css';
+import './components/map/MapView.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Landing page – judges see this first */}
-        <Route path="/" element={<Landing />} />
-
-        {/* Main app */}
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </Router>
+    <div className="app">
+      <MapView />
+    </div>
   );
 }
 
