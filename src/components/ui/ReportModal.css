@@ -1,0 +1,338 @@
+/* ReportModal.css - Incident Report Modal */
+
+/* ========== MODAL OVERLAY ========== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* ========== MODAL CONTENT ========== */
+  .modal-content {
+    width: 100%;
+    max-width: 32rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    
+    /* Glassmorphism */
+    backdrop-filter: blur(20px);
+    background: linear-gradient(
+      135deg,
+      rgba(20, 20, 20, 0.95),
+      rgba(30, 30, 30, 0.95)
+    );
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 1.5rem;
+    
+    /* Shadow */
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.8),
+      0 0 100px rgba(239, 68, 68, 0.2);
+    
+    /* Animation */
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(2rem) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* ========== CUSTOM SCROLLBAR ========== */
+  .modal-content::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+  
+  .modal-content::-webkit-scrollbar-thumb {
+    background: rgba(239, 68, 68, 0.5);
+    border-radius: 10px;
+  }
+  
+  .modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(239, 68, 68, 0.7);
+  }
+  
+  /* ========== MODAL HEADER ========== */
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+    background: linear-gradient(
+      to bottom,
+      rgba(239, 68, 68, 0.1),
+      transparent
+    );
+  }
+  
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .title-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: #ef4444;
+    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6));
+  }
+  
+  .modal-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    background: linear-gradient(to right, white, #fecaca);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #d1d5db;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .close-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+    transform: rotate(90deg);
+  }
+  
+  .close-btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* ========== FORM ========== */
+  .report-form {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* ========== INPUT GROUPS ========== */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .input-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #d1d5db;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  /* ========== GLASS INPUTS ========== */
+  .glass-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 0.875rem 1rem;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .glass-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(239, 68, 68, 0.5);
+    box-shadow: 
+      0 0 0 3px rgba(239, 68, 68, 0.1),
+      0 0 20px rgba(239, 68, 68, 0.2);
+  }
+  
+  .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+  /* Select dropdown */
+  .glass-input option {
+    background: #1a1a1a;
+    color: white;
+  }
+  
+  /* Textarea */
+  textarea.glass-input {
+    resize: vertical;
+    min-height: 5rem;
+  }
+  
+  /* ========== INPUT WITH ICON ========== */
+  .input-with-icon {
+    position: relative;
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #f87171;
+    pointer-events: none;
+  }
+  
+  .input-with-icon .glass-input {
+    padding-left: 3rem;
+  }
+  
+  /* ========== URGENCY RADIO GROUP (Optional Enhancement) ========== */
+  .urgency-group {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .urgency-option {
+    flex: 1;
+    position: relative;
+  }
+  
+  .urgency-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .urgency-label {
+    display: block;
+    padding: 0.75rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+  }
+  
+  .urgency-option input[type="radio"]:checked + .urgency-label {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+    font-weight: 600;
+  }
+  
+  .urgency-label:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* ========== MODAL ACTIONS ========== */
+  .modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(239, 68, 68, 0.1);
+  }
+  
+  .modal-actions > * {
+    flex: 1;
+  }
+  
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 640px) {
+    .modal-content {
+      margin: 0;
+      border-radius: 1rem;
+    }
+    
+    .modal-header {
+      padding: 1.25rem;
+    }
+    
+    .modal-header h2 {
+      font-size: 1.25rem;
+    }
+    
+    .report-form {
+      padding: 1.25rem;
+      gap: 1.25rem;
+    }
+    
+    .modal-actions {
+      flex-direction: column;
+    }
+  }
+  
+  /* ========== FORM VALIDATION STATES ========== */
+  .glass-input:invalid:not(:placeholder-shown) {
+    border-color: rgba(239, 68, 68, 0.6);
+  }
+  
+  .glass-input:valid:not(:placeholder-shown) {
+    border-color: rgba(34, 197, 94, 0.4);
+  }
+  
+  /* ========== LOADING STATE (Optional) ========== */
+  .modal-content.loading {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  
+  .modal-content.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3rem;
+    height: 3rem;
+    margin: -1.5rem 0 0 -1.5rem;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #ef4444;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }

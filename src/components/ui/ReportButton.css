@@ -1,0 +1,189 @@
+/* ReportButton.css - Floating Action Button */
+
+/* ========== FLOATING ACTION BUTTON ========== */
+.report-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    
+    /* Glassmorphism */
+    backdrop-filter: blur(16px);
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.9), rgba(153, 27, 27, 0.9));
+    border: 2px solid rgba(239, 68, 68, 0.6);
+    border-radius: 9999px;
+    
+    /* Sizing */
+    padding: 1rem 1.75rem;
+    
+    /* Effects */
+    box-shadow: 
+      0 10px 30px rgba(220, 38, 38, 0.4),
+      0 0 60px rgba(239, 68, 68, 0.3);
+    
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Glow variables */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    
+    /* Animation */
+    animation: fabPulse 3s ease-in-out infinite;
+  }
+  
+  /* ========== GLOW EFFECT ========== */
+  .report-fab::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 9999px;
+    padding: 3px;
+    background: radial-gradient(
+      400px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 82, 82, 1),
+      transparent 40%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .report-fab:hover::before {
+    opacity: 1;
+  }
+  
+  .report-fab .btn-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 82, 82, 0.4),
+      transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .report-fab:hover .btn-glow {
+    opacity: 1;
+  }
+  
+  /* ========== HOVER STATES ========== */
+  .report-fab:hover {
+    transform: scale(1.1) translateY(-4px);
+    box-shadow: 
+      0 20px 40px rgba(220, 38, 38, 0.6),
+      0 0 80px rgba(239, 68, 68, 0.5);
+    border-color: rgba(255, 82, 82, 0.8);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 1), rgba(185, 28, 28, 1));
+  }
+  
+  .report-fab:active {
+    transform: scale(1.05) translateY(-2px);
+  }
+  
+  /* ========== BUTTON CONTENT ========== */
+  .report-fab .btn-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  
+  .fab-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: all 0.4s ease;
+  }
+  
+  .report-fab:hover .fab-icon {
+    transform: rotate(15deg) scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+  }
+  
+  .fab-text {
+    white-space: nowrap;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* ========== PULSE ANIMATION ========== */
+  @keyframes fabPulse {
+    0%, 100% {
+      box-shadow: 
+        0 10px 30px rgba(220, 38, 38, 0.4),
+        0 0 60px rgba(239, 68, 68, 0.3);
+    }
+    50% {
+      box-shadow: 
+        0 10px 40px rgba(220, 38, 38, 0.6),
+        0 0 80px rgba(239, 68, 68, 0.5);
+    }
+  }
+  
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 640px) {
+    .report-fab {
+      bottom: 1.5rem;
+      right: 1.5rem;
+      padding: 0.875rem 1.5rem;
+    }
+    
+    .fab-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    
+    .report-fab .btn-content {
+      font-size: 0.9375rem;
+      gap: 0.625rem;
+    }
+  }
+  
+  /* ========== ACCESSIBILITY ========== */
+  .report-fab:focus-visible {
+    outline: 3px solid rgba(239, 68, 68, 0.6);
+    outline-offset: 4px;
+  }
+  
+  /* ========== RIPPLE EFFECT (Optional Enhancement) ========== */
+  .report-fab::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    border: 2px solid rgba(239, 68, 68, 0.8);
+    animation: ripple 2s ease-out infinite;
+    opacity: 0;
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .report-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+}
+
+.dashboard-main {
+  position: relative;
+  z-index: 1;
+}
