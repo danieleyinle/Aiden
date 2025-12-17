@@ -1,16 +1,39 @@
-# React + Vite
+# AIDEN
+**AI-Driven Emergency & Detection Network**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+AIDEN is a community-first safety and early-warning platform built in response
+to rising insecurity in Nigeria, including banditry, kidnappings, and targeted
+attacks on vulnerable communities.
 
-Currently, two official plugins are available:
+Inspired by real incidents across the country, AIDEN helps people stay informed,
+make safer decisions, and avoid danger through verified alerts and community
+reporting.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Problem
+Many Nigerians lack access to timely, reliable safety information.
+Security alerts often arrive too late, leaving communities exposed
+to avoidable harm.
 
-## React Compiler
+## Solution
+AIDEN enables users to:
+- Report security incidents in real time
+- View verified danger zones on a live map
+- Receive location-based safety alerts
+- Stay informed before traveling or commuting
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## SDG Alignment
+**SDG 16 – Peace, Justice & Strong Institutions**
 
-## Expanding the ESLint configuration
+**SDG 11 - Sustainable Cities & Communities (safer movement, safer cities)**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+- Frontend: React + TailwindCSS
+- Backend: Node.js + Express
+- Database: MongoDB / Firebase
+- Maps & Alerts: Map APIs + Notification system
+- Version Control: GitHub
+
+## Vision
+To make safety information accessible, human-centered, and actionable —
+so fewer lives are lost to preventable violence.
