@@ -1,9 +1,14 @@
  // src/pages/Dashboard.jsx
 
+import React, { useState } from 'react';
 import MapView from '../components/map/Map';
 import './Dashboard.css';
+import ReportButton from '../components/ui/ReportButton';
+import ReportModal from '../components/ui/ReportModal';
 
 const Dashboard = () => {
+  const [isReportOpen, setIsReportOpen] = useState(false);
+
   return (
     <div className="dashboard">
       {/* Top header bar */}
@@ -25,12 +30,11 @@ const Dashboard = () => {
         <MapView />
       </main>
 
-      {/* Floating report button */}
-      <button className="report-fab">
-        <span className="fab-icon">📍</span>
-        <span className="fab-text">Report Incident</span>
-      </button>
+      {/* Floating report button + modal */}
+      <ReportButton onClick={() => setIsReportOpen(true)} />
+      <ReportModal isOpen={isReportOpen} onClose={() => setIsReportOpen(false)} />
     </div>
+    
   );
 };
 

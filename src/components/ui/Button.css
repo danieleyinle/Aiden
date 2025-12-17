@@ -1,0 +1,301 @@
+/* Button.css - Reusable Button Component Styles */
+
+/* ========== BASE BUTTON STYLES ========== */
+.btn-base {
+    position: relative;
+    border-radius: 1rem;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    color: white;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* ========== GLOW EFFECT ========== */
+  .btn-glow-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1rem;
+    padding: 2px;
+    background: radial-gradient(
+      600px circle at var(--mouse-x) var(--mouse-y),
+      rgba(239, 68, 68, 0.8),
+      transparent 40%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .btn-glow-effect:hover::before {
+    opacity: 1;
+  }
+  
+  .btn-glow-layer {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at var(--mouse-x) var(--mouse-y),
+      rgba(239, 68, 68, 0.3),
+      transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .btn-glow-effect:hover .btn-glow-layer {
+    opacity: 1;
+  }
+  
+  .btn-glow-effect:hover {
+    transform: scale(1.05);
+    border-color: rgba(239, 68, 68, 0.5);
+  }
+  
+  /* ========== BUTTON VARIANTS ========== */
+  
+  /* Primary Button - Red gradient */
+  .btn-primary {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.8), rgba(153, 27, 27, 0.8));
+    border-color: rgba(239, 68, 68, 0.5);
+  }
+  
+  .btn-primary:hover {
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.7);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(185, 28, 28, 0.9));
+  }
+  
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+  
+  /* Secondary Button - Subtle glass */
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
+  }
+  
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+  
+  /* Danger Button - Bright red alert */
+  .btn-danger {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.9));
+    border-color: rgba(255, 82, 82, 0.6);
+  }
+  
+  .btn-danger:hover {
+    box-shadow: 0 0 50px rgba(239, 68, 68, 0.9);
+    background: linear-gradient(135deg, rgba(255, 82, 82, 1), rgba(239, 68, 68, 1));
+  }
+  
+  .btn-danger:active {
+    transform: scale(0.98);
+  }
+  
+  /* Outline Button - Transparent with border */
+  .btn-outline {
+    background: transparent;
+    border-color: rgba(239, 68, 68, 0.6);
+    color: #ef4444;
+  }
+  
+  .btn-outline:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.8);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+    color: #ffffff;
+  }
+  
+  .btn-outline:active {
+    transform: scale(0.98);
+  }
+  
+  /* Ghost Button - Minimal style */
+  .btn-ghost {
+    background: transparent;
+    border-color: transparent;
+  }
+  
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+  }
+  
+  .btn-ghost:active {
+    transform: scale(0.98);
+  }
+  
+  /* ========== BUTTON SIZES ========== */
+  
+  /* Small */
+  .btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .btn-small .btn-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Medium (default) */
+  .btn-medium {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .btn-medium .btn-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* Large */
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+  
+  .btn-large .btn-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  /* Extra Large */
+  .btn-xlarge {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.25rem;
+    border-radius: 1.25rem;
+  }
+  
+  .btn-xlarge .btn-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  /* ========== BUTTON STATES ========== */
+  
+  /* Disabled */
+  .btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  .btn-disabled:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Full Width */
+  .btn-full-width {
+    width: 100%;
+  }
+  
+  /* ========== BUTTON CONTENT ========== */
+  .btn-content-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .btn-text {
+    white-space: nowrap;
+  }
+  
+  .btn-icon {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  /* Icon animations */
+  .btn-glow-effect:hover .btn-icon-right {
+    transform: translateX(0.25rem);
+  }
+  
+  .btn-glow-effect:hover .btn-icon-left {
+    transform: translateX(-0.25rem);
+  }
+  
+  .btn-primary:hover .btn-icon,
+  .btn-danger:hover .btn-icon {
+    transform: rotate(12deg);
+  }
+  
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 640px) {
+    .btn-medium {
+      padding: 0.625rem 1.25rem;
+      font-size: 0.9375rem;
+    }
+    
+    .btn-large {
+      padding: 0.875rem 1.75rem;
+      font-size: 1rem;
+    }
+    
+    .btn-xlarge {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+    }
+  }
+  
+  /* ========== FOCUS STYLES (Accessibility) ========== */
+  .btn-base:focus-visible {
+    outline: 2px solid rgba(239, 68, 68, 0.6);
+    outline-offset: 2px;
+  }
+  
+  /* ========== LOADING STATE (Optional) ========== */
+  .btn-loading {
+    pointer-events: none;
+    position: relative;
+  }
+  
+  .btn-loading .btn-text {
+    opacity: 0;
+  }
+  
+  .btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }

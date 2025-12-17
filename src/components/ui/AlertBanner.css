@@ -1,0 +1,118 @@
+/* AlertBanner.css */
+
+.alert-banner-container {
+    position: fixed;
+    top: -100px; /* Start off-screen */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    z-index: 9999;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: auto;
+  }
+  
+  .alert-banner-container.show {
+    top: 2rem;
+  }
+  
+  .alert-glass-wrapper {
+    background: rgba(153, 27, 27, 0.2); /* Deep red translucent */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    border-radius: 1.25rem;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 
+                0 0 20px rgba(239, 68, 68, 0.2);
+    overflow: hidden;
+  }
+  
+  .alert-content {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  
+  .alert-icon-wrapper {
+    background: rgba(239, 68, 68, 0.2);
+    padding: 0.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse-red 2s infinite;
+  }
+  
+  .alert-icon {
+    color: #ef4444;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .alert-text-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .alert-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: #f87171;
+    margin-bottom: 0.25rem;
+  }
+  
+  .alert-message {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .alert-close-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .alert-close-btn:hover {
+    color: #ffffff;
+  }
+  
+  /* Red Animated Progress Bar at the bottom of the banner */
+  .alert-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: #ef4444;
+    width: 100%;
+    animation: drain 10s linear forwards;
+  }
+  
+  @keyframes pulse-red {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+  }
+  
+  @keyframes drain {
+    from { width: 100%; }
+    to { width: 0%; }
+  }
+  
+  @media (max-width: 640px) {
+    .alert-banner-container {
+      width: 95%;
+    }
+    .alert-message {
+      font-size: 0.85rem;
+    }
+  }
