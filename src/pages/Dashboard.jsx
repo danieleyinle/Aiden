@@ -7,7 +7,7 @@ import ReportButton from '../components/ui/ReportButton';
 import ReportModal from '../components/ui/ReportModal';
 
 const Dashboard = () => {
-  const [isReportOpen, setIsReportOpen] = useState(false);
+  const [isReportOpen, setIsReportOpen] = useState(true);
 
   return (
     <div className="dashboard">

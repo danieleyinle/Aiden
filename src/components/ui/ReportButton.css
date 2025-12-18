@@ -2,34 +2,47 @@
 
 /* ========== FLOATING ACTION BUTTON ========== */
 .report-fab {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    position: fixed !important;
+    bottom: 24px !important; 
+    right: 24px !important;
+    /* Ensure it doesn't stretch to full width */
+    left: auto;
+    width: auto;
+    max-width: none;
+
     z-index: 1000;
-    
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
     /* Glassmorphism */
-    backdrop-filter: blur(16px);
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.9), rgba(153, 27, 27, 0.9));
-    border: 2px solid rgba(239, 68, 68, 0.6);
+    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.96), rgba(153, 27, 27, 0.96)) !important;
+    border: 1px solid rgba(255, 82, 82, 0.12);
     border-radius: 9999px;
-    
+
     /* Sizing */
-    padding: 1rem 1.75rem;
-    
+    padding: 0.85rem 1.5rem;
+    min-width: 3.6rem;
+    min-height: 3.6rem;
+    box-sizing: border-box;
+
     /* Effects */
     box-shadow: 
-      0 10px 30px rgba(220, 38, 38, 0.4),
-      0 0 60px rgba(239, 68, 68, 0.3);
-    
+      0 8px 28px rgba(220, 38, 38, 0.25),
+      0 0 40px rgba(239, 68, 68, 0.18);
+
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    
+    transition: transform 240ms ease, box-shadow 240ms ease, background 240ms ease;
+
     /* Glow variables */
     --mouse-x: 50%;
     --mouse-y: 50%;
-    
+
     /* Animation */
-    animation: fabPulse 3s ease-in-out infinite;
+    animation: fabPulse 4s ease-in-out infinite;
   }
   
   /* ========== GLOW EFFECT ========== */
@@ -40,7 +53,7 @@
     border-radius: 9999px;
     padding: 3px;
     background: radial-gradient(
-      400px circle at var(--mouse-x) var(--mouse-y),
+      300px circle at var(--mouse-x) var(--mouse-y),
       rgba(255, 82, 82, 1),
       transparent 40%
     );
@@ -49,7 +62,8 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 240ms ease;
+    pointer-events: none;
   }
   
   .report-fab:hover::before {
@@ -62,11 +76,12 @@
     border-radius: 9999px;
     background: radial-gradient(
       circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 82, 82, 0.4),
+      rgba(255, 82, 82, 0.36),
       transparent 50%
     );
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 220ms ease;
+    pointer-events: none;
   }
   
   .report-fab:hover .btn-glow {
@@ -102,7 +117,7 @@
   .fab-icon {
     width: 1.5rem;
     height: 1.5rem;
-    transition: all 0.4s ease;
+    transition: transform 260ms ease, filter 260ms ease;
   }
   
   .report-fab:hover .fab-icon {
@@ -130,28 +145,50 @@
   }
   
   /* ========== RESPONSIVE ========== */
-  @media (max-width: 640px) {
+  @media (max-width: 480px) {
     .report-fab {
-      bottom: 1.5rem;
-      right: 1.5rem;
-      padding: 0.875rem 1.5rem;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      padding: 0.75rem;
+      width: 3.75rem;
+      height: 3.75rem;
+      border-radius: 50%;
+      min-width: unset;
     }
     
     .fab-icon {
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 1.75rem;
+      height: 1.75rem;
     }
     
     .report-fab .btn-content {
       font-size: 0.9375rem;
-      gap: 0.625rem;
+      gap: 0.5rem;
+    }
+
+    /* Hide the text label on small screens to keep a compact FAB */
+    .report-fab .fab-text {
+      display: none;
     }
   }
   
   /* ========== ACCESSIBILITY ========== */
   .report-fab:focus-visible {
-    outline: 3px solid rgba(239, 68, 68, 0.6);
-    outline-offset: 4px;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 82, 82, 0.16), 0 8px 30px rgba(220, 38, 38, 0.18);
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  /* Respect user preference for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .report-fab,
+    .report-fab .fab-icon,
+    .report-fab::before,
+    .report-fab::after,
+    .report-fab .btn-glow {
+      animation: none;
+      transition: none;
+    }
   }
   
   /* ========== RIPPLE EFFECT (Optional Enhancement) ========== */
@@ -161,8 +198,15 @@
     inset: 0;
     border-radius: 9999px;
     border: 2px solid rgba(239, 68, 68, 0.8);
-    animation: ripple 2s ease-out infinite;
     opacity: 0;
+    transition: opacity 160ms ease, transform 200ms ease;
+    transform: scale(1);
+  }
+
+  .report-fab:active::after {
+    opacity: 0.16;
+    transform: scale(1.1);
+    animation: ripple 600ms ease-out;
   }
   
   @keyframes ripple {
@@ -171,19 +215,17 @@
       opacity: 1;
     }
     100% {
-      transform: scale(1.5);
+      transform: scale(1.6);
       opacity: 0;
     }
   }
 
-  .report-button {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 10000;
-}
+  /* Safety override: ensure FAB stays compact and anchored bottom-right */
+  /* This guards against other page rules that might inadvertently expand buttons */
+  .report-fab {
+    left: auto !important;
+    width: auto !important;
+    max-width: none !important;
+  }
 
-.dashboard-main {
-  position: relative;
-  z-index: 1;
-}
+ 
