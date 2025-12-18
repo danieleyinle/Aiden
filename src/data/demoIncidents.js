@@ -1,5 +1,7 @@
 // src/data/demoIncidents.js
 
+// For demo purposes, would eventually be fetched from backend API
+
 export const demoIncidents = [
   {
     id: '1',

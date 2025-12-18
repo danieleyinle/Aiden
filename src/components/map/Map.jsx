@@ -9,10 +9,9 @@ import MapLegend from './MapLegend';
 import { demoIncidents } from '../../data/demoIncidents';
 import { calculateRiskZones } from '../../utils/riskCalculator';
 import 'leaflet/dist/leaflet.css';
-import './MapView.css'
+import './MapView.css';
 
-// Fix for default marker icons in React-Leaflet
-// (Leaflet's default icons don't load properly in Vite/Webpack)
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -23,9 +22,9 @@ L.Icon.Default.mergeOptions({
 const MapView = () => {
   // Lagos city center coordinates [latitude, longitude]
   const lagosCenter = [6.5244, 3.3792];
-  const initialZoom = 11; // City-level view
+  const initialZoom = 11; 
 
-  // User's current location (mocked for demo - in real app, get from geolocation API)
+  // Dummy user location for demo purposes
   const userLocation = [6.5244, 3.3792];
 
   const [incidents] = useState(demoIncidents);
@@ -39,7 +38,7 @@ const MapView = () => {
 
     const zones = calculateRiskZones(incidents);
     setRiskZones(zones);
-    console.log('Risk zones calculated:', zones); // Debug
+    console.log('Risk zones calculated:', zones); 
   }, [incidents]);
 
   // Custom icon for user location marker (blue pulsing dot)
@@ -47,13 +46,13 @@ const MapView = () => {
     className: 'user-location-marker',
     html: '<div class="user-location-dot"></div>',
     iconSize: [20, 20],
-    iconAnchor: [10, 10], // Center the icon
+    iconAnchor: [10, 10], 
   });
 
   return (
     <div className="map-wrapper">
 
-      {/* Loading overlay */}
+      
       {isLoading && (
         <div className="map-loading">
           <div className="loading-spinner"></div>
@@ -66,7 +65,7 @@ const MapView = () => {
       <MapContainer
         center={lagosCenter}
         zoom={initialZoom}
-        zoomControl={true} // Show zoom +/- buttons
+        zoomControl={true} 
         style={{ height: '100vh', width: '100%' }}
         className="leaflet-map"
       >
@@ -77,17 +76,17 @@ const MapView = () => {
           maxZoom={19}
         />
 
-        {/* Risk zones (render BEFORE markers so markers appear on top) - NEW */}
+        
         {riskZones.map((zone) => (
           <RiskZoneOverlay key={zone.id} zone={zone} />
         ))}
 
-        {/* User location marker with pulsing animation */}
+        
         <Marker position={userLocation} icon={userLocationIcon}>
           <Popup>Your Location</Popup>
         </Marker>
 
-        {/* Optional: Add a subtle circle around user location for better visibility */}
+        
         <Circle
           center={userLocation}
           radius={500} // 500 meters

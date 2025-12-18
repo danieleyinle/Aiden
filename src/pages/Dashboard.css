@@ -97,7 +97,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  padding-top: 60px; /* Space for header */
+  padding-top: 60px; 
 }
 
 /* Floating action button */
@@ -140,7 +140,7 @@
   font-weight: 700;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .header-content {
     padding: 10px 16px;
@@ -174,7 +174,7 @@
   }
 
   .fab-text {
-    display: none; /* Hide text on mobile, show only icon */
+    display: none; 
   }
 
   .fab-icon {
@@ -185,7 +185,7 @@
 @media (max-width: 480px) {
   .report-fab {
     padding: 12px;
-    border-radius: 50%; /* Make it circular on very small screens */
+    border-radius: 50%; 
   }
 }
 
@@ -194,12 +194,12 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10; /* Keeps header above map */
-  /* ... your other styles ... */
+  z-index: 10; 
+  
 }
 
 .dashboard-main {
   width: 100vw;
   height: 100vh;
-  z-index: 1; /* Map stays in the background */
+  z-index: 1; 
 }

@@ -10,7 +10,7 @@ const AlertBanner = ({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Trigger slide-in animation on mount
+    
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);

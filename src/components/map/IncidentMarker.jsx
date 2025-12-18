@@ -6,7 +6,7 @@ import IncidentPopup from './IncidentPopup';
 import './IncidentMarker.css';
 
 const IncidentMarker = ({ incident }) => {
-  // Calculate how old the incident is (in hours)
+  
   const getIncidentAge = (timestamp) => {
     return (Date.now() - timestamp) / (1000 * 60 * 60); // hours
   };
@@ -14,10 +14,10 @@ const IncidentMarker = ({ incident }) => {
   // Get color based on age
   const getMarkerColor = (timestamp) => {
     const hoursAgo = getIncidentAge(timestamp);
-    if (hoursAgo < 1) return '#ef4444'; // Critical red (< 1 hour)
-    if (hoursAgo < 3) return '#f59e0b'; // Warning amber (1-3 hours)
-    if (hoursAgo < 6) return '#fbbf24'; // Caution yellow (3-6 hours)
-    return '#64748b'; // Old gray (6+ hours)
+    if (hoursAgo < 1) return '#ef4444'; 
+    if (hoursAgo < 3) return '#f59e0b'; 
+    if (hoursAgo < 6) return '#fbbf24'; 
+    return '#64748b'; 
   };
 
   // Get icon emoji based on incident type

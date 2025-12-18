@@ -16,7 +16,7 @@ const ReportModal = ({ isOpen, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitting incident:", formData);
-    // Here we will eventually connect to Firebase
+    
     onClose();
   };
 

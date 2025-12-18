@@ -11,7 +11,7 @@
 
 /* Leaflet map container styling */
 .leaflet-map {
-  background-color: #0f172a; /* Match our dark theme */
+  background-color: #0f172a; 
 }
 
 /* User location pulsing dot animation */
@@ -23,7 +23,7 @@
 .user-location-dot {
   width: 20px;
   height: 20px;
-  background: #3b82f6; /* Blue */
+  background: #3b82f6; 
   border: 3px solid #ffffff;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
@@ -118,7 +118,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
   border-radius: 8px !important;
   overflow: hidden;
-  margin-top: 80px !important; /* Push down below header */
+  margin-top: 80px !important; 
 }
 
 .leaflet-control-zoom a {

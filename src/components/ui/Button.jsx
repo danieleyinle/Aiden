@@ -14,7 +14,7 @@ const Button = ({
   className = ''
 }) => {
   
-  // Mouse glow effect
+  
   useEffect(() => {
     const handleMouseMove = (e) => {
       const buttons = document.querySelectorAll('.btn-glow-effect');

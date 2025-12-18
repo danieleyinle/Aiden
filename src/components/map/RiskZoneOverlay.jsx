@@ -8,16 +8,16 @@ const RiskZoneOverlay = ({ zone }) => {
   const getZoneStyle = (severity) => {
     if (severity === 'high') {
       return {
-        color: '#ef4444',        // Red border
-        fillColor: '#ef4444',    // Red fill
-        fillOpacity: 0.15,       // Semi-transparent
+        color: '#ef4444',        
+        fillColor: '#ef4444',    
+        fillOpacity: 0.15,       
         weight: 2,
         className: 'risk-zone-high'
       };
     } else {
       return {
-        color: '#f59e0b',        // Amber border
-        fillColor: '#f59e0b',    // Amber fill
+        color: '#f59e0b',        
+        fillColor: '#f59e0b',    
         fillOpacity: 0.1,
         weight: 2,
         className: 'risk-zone-medium'

@@ -1,6 +1,6 @@
-/* ReportModal.css - Incident Report Modal */
 
-/* ========== MODAL OVERLAY ========== */
+
+
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -23,7 +23,7 @@
     }
   }
   
-  /* ========== MODAL CONTENT ========== */
+  
   .modal-content {
     width: 100%;
     max-width: 32rem;
@@ -60,7 +60,7 @@
     }
   }
   
-  /* ========== CUSTOM SCROLLBAR ========== */
+  
   .modal-content::-webkit-scrollbar {
     width: 8px;
   }
@@ -79,7 +79,7 @@
     background: rgba(239, 68, 68, 0.7);
   }
   
-  /* ========== MODAL HEADER ========== */
+
   .modal-header {
     display: flex;
     align-items: center;

@@ -5,7 +5,7 @@
     position: fixed !important;
     bottom: 24px !important; 
     right: 24px !important;
-    /* Ensure it doesn't stretch to full width */
+  
     left: auto;
     width: auto;
     max-width: none;
